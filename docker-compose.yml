@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"  # Assuming the frontend is listening on port 3000 internally
+    depends_on:
+      - backend
+
